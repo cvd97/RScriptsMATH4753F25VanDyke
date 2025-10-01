@@ -2,7 +2,7 @@
 % Please edit documentation in R/scatter.R
 \name{scatterhist}
 \alias{scatterhist}
-\title{Function to read data}
+\title{Function to make a scatterhist plot}
 \usage{
 scatterhist(x, y, xlab = "", ylab = "")
 }
@@ -19,7 +19,7 @@ scatterhist(x, y, xlab = "", ylab = "")
 A scatter plot x vs y with marginal histograms
 }
 \description{
-Reads in csv files
+Function to make a scatterhist plot
 }
 \examples{
 scatterhist(x = 1:10, y = 11:20)

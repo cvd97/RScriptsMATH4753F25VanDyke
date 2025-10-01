@@ -1,6 +1,6 @@
-#' Function to read data
+#' Function to make a scatterhist plot
 #'
-#' Reads in csv files
+#'
 #' @param x a quantitative vector
 #' @param y a quantitative vector
 #' @param xlab x label
