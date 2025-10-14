@@ -1,0 +1,128 @@
+---
+title: "Birthday"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Birthday}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(RScriptsMATH4753F25VanDyke)
+```
+
+
+# Mathematical Derivation
+
+$$
+\text{Assume }m=365,\; n\le m.
+$$
+
+$$
+\Pr(\text{all distinct})
+= \frac{m}{m}\cdot\frac{m-1}{m}\cdot\frac{m-2}{m}\cdots\frac{m-(n-1)}{m}
+= \frac{(m)_n}{m^n}.
+$$
+
+$$
+\boxed{\Pr(\text{at least one match})
+= 1 - \frac{(m)_n}{m^n}}
+\quad\text{(exact).}
+$$
+
+$$
+\ln\Pr(\text{all distinct})
+= \sum_{k=0}^{n-1}\ln\!\Big(1-\frac{k}{m}\Big)
+\approx -\sum_{k=0}^{n-1}\frac{k}{m}
+= -\frac{n(n-1)}{2m}.
+$$
+
+$$
+\Pr(\text{all distinct}) \approx \exp\!\left(-\frac{n(n-1)}{2m}\right)
+\;\Rightarrow\;
+\boxed{\Pr(\text{at least one match})
+\approx 1 - \exp\!\left(-\frac{n(n-1)}{2m}\right)}
+\quad\text{(approx).}
+$$
+
+$$
+\text{With } m=365:\quad
+\Pr(\text{match}) = 1 - \frac{(365)P_n}{365^n}
+\;\approx\; 1 - \exp\!\left(-\frac{n(n-1)}{730}\right).
+$$
+
+# Reformulation
+
+
+$$
+\Pr(\overline{A}) = \frac{365 P_n}{365^n}
+= \frac{365!}{(365-n)!\,365^n}.
+$$
+
+$$
+\log \Pr(\overline{A})
+= \log(n!) + \log \binom{365}{n} - n\log 365.
+$$
+
+$$
+\Pr(A) = 1 - \Pr(\overline{A}) = 1 - \exp\!\Big(\log(n!) + \log \binom{365}{n} - n\log 365\Big).
+$$
+$$
+\log \Pr(\overline{A})
+= \operatorname{lfactorial}(n) + \operatorname{lchoose}(365, n) - n \log(365).
+$$
+
+$$
+\Pr(\overline{A})
+= \exp\!\Big( \operatorname{lfactorial}(n) + \operatorname{lchoose}(365, n) - n \log(365) \Big).
+$$
+
+$$
+\Pr(A)
+= 1 - \Pr(\overline{A})
+= 1 - \exp\!\Big( \operatorname{lfactorial}(n) + \operatorname{lchoose}(365, n) - n \log(365) \Big).
+$$
+
+
+
+
+# Body of the function
+
+  1 - (exp(lchoose(365,n) + lfactorial(n) - n*log(365)))
+  
+### Build Check
+
+N  checking for non-standard things in the check directory
+   Found the following files/directories:
+     ‘.DS_Store’
+✔  checking for detritus in the temp directory
+   
+   See
+     ‘/Users/codyv/Documents/RPACKAGES/RScriptsMATH4753F25VanDyke.Rcheck/00check.log’
+   for details.
+   
+ R CMD check results  RScriptsMATH4753F25VanDy
+Duration: 33.1s
+
+❯ checking for non-standard things in the check directory ... NOTE
+  Found the following files/directories:
+    ‘.DS_Store’
+
+0 errors ✔ | 0 warnings ✔ | 1 note ✖
+
+R CMD check succeeded
+  
+# Run the function
+
+```{r}
+
+birthday(n = 20:25)
+
+```

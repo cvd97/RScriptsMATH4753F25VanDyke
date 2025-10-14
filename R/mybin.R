@@ -10,17 +10,18 @@
 #' @param p the probability of success for each trial
 #'
 #' @importFrom graphics barplot
+#' @importFrom grDevices rainbow
 #'
 #' @return A numeric vector of proportions for 0 through n successes.Names of the vector correspond to the number of successes.
 #' @export
 #'
 #' @examples
-#' mybin(iter = 100, n = 10, p = 0.7)
+#' mybinFunc(iter = 100, n = 10, p = 0.7)
 
-mybin=function(iter=100,n=10, p=0.5){
+mybinFunc = function(iter=100,n=10, p=0.5){
   # make a matrix to hold the samples
   #initially filled with NA's
-  sam.mat=matrix(NA,nr=n,nc=iter, byrow=TRUE)
+  sam.mat=matrix(NA,nrow = n, ncol = iter, byrow=TRUE)
   #Make a vector to hold the number of successes in each trial
   succ=c()
   for( i in 1:iter){
