@@ -18,7 +18,7 @@
 #' @examples
 #' myncurve(a = 2, mu = 0, sigma = 1)
 myncurve = function(a, mu, sigma) {
-  curve(dnorm(x, mean = mu, sd = sigma), xlim = c(mu - 3 * sigma, mu + 3 * sigma))
+  curve(dnorm(x, mean = mu, sd = sigma), add = TRUE, xlim = c(mu - 3 * sigma, mu + 3 * sigma))
 
   # Shade the area from -inf (approximated as mu - 3 * sigma) to a
   xleft = mu - 3 * sigma
