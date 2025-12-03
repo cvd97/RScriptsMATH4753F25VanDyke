@@ -1,0 +1,82 @@
+---
+title: "Rpackage"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Rpackage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(RScriptsMATH4753F25VanDyke)
+```
+
+# Call Functions
+
+## Description
+
+This is an introductory package that was made during the 2025 Fall semester at the University of Oklahoma for the course MATH-4753 authored by Cody Van Dyke. There are a few basic function in this package and a data set. There are also two vignettes one discussing the birthday solution and another describing this package.
+
+## scatterhist function
+
+```{r}
+
+RScriptsMATH4753F25VanDyke::scatterhist(x = 1:10, y = 11:20)
+
+```
+
+
+## myboot2 function
+
+```{r}
+
+set.seed(123)
+
+x <- rnorm(30, mean = 5, sd = 2)
+
+cap <- RScriptsMATH4753F25VanDyke::myboot2(x=x)
+
+```
+
+
+## mybin function
+
+```{r}
+
+RScriptsMATH4753F25VanDyke::mybinFunc()
+
+```
+
+
+## ntickets function
+
+```{r}
+
+RScriptsMATH4753F25VanDyke::ntickets(N = 400, gamma = 0.02, p = 0.95)
+
+```
+
+# Data set
+
+```{r}
+
+RScriptsMATH4753F25VanDyke::fire
+
+```
+
+# Build Check()
+
+❯ checking Rd contents ... NOTE
+  Argument items with no description in Rd file 'myboot2.Rd':
+    ‘...’
+
+0 errors ✔ | 0 warnings ✔ | 3 notes ✖
+
+R CMD check succeeded
